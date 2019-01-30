@@ -60,9 +60,3 @@ cat ${DIR}/${WALLET}-key | grep priv -A 3 | tail -n +2 | tr -d '\n[:space:]:' | 
 
 #echo "Generate the hash and take the address part"
 cat ${DIR}/${WALLET}-pub | keccak-256sum -x -l | tr -d ' -' | tail -c 41 > ${DIR}/${WALLET}-address
-
-#echo "Create new wallet"
-geth account new --datadir ${DIR} --password ${DIR}/${WALLET}-pass ${DIR}/${WALLET}-priv
-
-#rename UTC-- ${WALLET}--UTC-- ${DIR}/keystore/UTC--* -v
-#mv ${DIR}/keystore/* ${DIR}
