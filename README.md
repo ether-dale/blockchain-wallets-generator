@@ -12,12 +12,6 @@ $ dnf -y update`
 $ dnf -y install git`
 ```
 
-```
-$ curl -O https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
-$ tar -C /usr/local -xzf go1.11.1.linux-amd64.tar.gz
-$ rm go1.11.1.linux-amd64.tar.gz
-```
-
 `dnf install automake make gcc-c++ git gmp-devel kernel-devel`
 
 ```
@@ -34,7 +28,6 @@ cd sha3sum
 make
 sudo make install
 cd
-git clone https://github.com/ethereum/go-ethereum
 ```
 
 
