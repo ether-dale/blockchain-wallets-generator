@@ -9,11 +9,7 @@ docker run -it ubuntu
 ### requires
 ``` 
 apt-get update
-apt-get install -y git
-apt-get install -y build-essential
-apt-get install -y pwgen
-apt-get install -y vim
-apt-get install -y dc
+apt-get install -y git build-essential pwgen vim dc
 ./install.sh
 ```
 
