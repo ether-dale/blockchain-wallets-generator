@@ -47,14 +47,9 @@ else
 fi
 
 #echo "Generate password for wallet"
-pwgen -s 13 7 > ${DIR}/${WALLET}-pass
+SEED=$(pwgen -s 13 7)
+echo ${SEED}> ${DIR}/${WALLET}-pass
 
-SEED="aaa"
-
-openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > ${DIR}/${WALLET}-key
-
-
-#HASH=$( echo -n ${DIR}/${WALLET}-pass | sha256sum | tr -d ' -' )
 HASH="80$( echo -n ${SEED} | sha256sum | tr -d ' -' )"
 
 #echo "HASH: "${HASH}
@@ -81,7 +76,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     PUB=${line}
 done < "${ROOT}/eos-wallets/encoded_pub"
 
-CHECKSUM=$(echo -n ${PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
+CHECKSUM=$(echo -n ${PUB} | xxd -p -r | /usr/local/bin/openssl dgst -ripemd160 | cut -c10-17)
 
 ADDCHECKSUM=${PUB}${CHECKSUM}
 
