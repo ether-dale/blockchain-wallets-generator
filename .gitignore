@@ -1,3 +1,7 @@
 .idea
 /tron-wallets/
 /eth-wallets/
+/eos-wallets/
+/libkeccak/
+/src/.vscode/
+/eosutils

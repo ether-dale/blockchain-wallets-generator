@@ -47,7 +47,7 @@ else
 fi
 
 #echo "Generate password for wallet"
-pwgen -s 13 7 > ${DIR}/${WALLET}-pass
+#pwgen -s 13 7 > ${DIR}/${WALLET}-pass
 
 #echo "Generate the private and public keys"
 openssl ecparam -name secp256k1 -genkey -noout | openssl ec -text -noout > ${DIR}/${WALLET}-key
