@@ -9,7 +9,15 @@ sudo docker run -it ubuntu
 ### requires
 ``` 
 apt-get update
-apt-get install -y git build-essential pwgen vim dc
+apt-get install -y git
+apt-get install -y build-essential
+apt-get install -y pwgen
+apt-get install -y vim
+apt-get install -y dc
+
+git clone https://github.com/openssl/openssl.git
+
+git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 ./install.sh
 ```
 
