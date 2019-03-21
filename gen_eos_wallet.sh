@@ -81,7 +81,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     PUB=${line}
 done < "${ROOT}/eos-wallets/encoded_pub"
 
-CHECKSUM=$(echo -n ${PUB} | xxd -p -r | /usr/local/bin/openssl dgst -ripemd160 | cut -c10-17)
+CHECKSUM=$(echo -n ${PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
 
 ADDCHECKSUM=${PUB}${CHECKSUM}
 
