@@ -2,8 +2,8 @@
 Safety creation keys for different blockchains. Always offline and minimum dependency.
 
 ```
-docker pull ubuntu
-docker run -it ubuntu
+sudo docker pull ubuntu
+sudo docker run -it ubuntu
 ```
 
 ### requires
