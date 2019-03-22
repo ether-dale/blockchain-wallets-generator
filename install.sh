@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-gcc src/eos/pubkey.cpp -o eosutils -lcrypto -lssl
-
 git clone https://github.com/maandree/libkeccak
 cd libkeccak
 make
@@ -13,4 +11,14 @@ git clone https://github.com/maandree/sha3sum
 cd sha3sum
 make
 make install
+
+cd
+git clone https://github.com/openssl/openssl.git
+cd openssl
+./config
+make
+make install
+
+
+
 
