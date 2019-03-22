@@ -13,6 +13,7 @@ apt-get install -y git
 apt-get install -y build-essential
 apt-get install -y pwgen
 apt-get install -y dc
+apt-get install -y vim
 
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
