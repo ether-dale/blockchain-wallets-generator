@@ -18,6 +18,9 @@ cd openssl
 ./config
 make
 make install
+ldconfig
+
+
 
 
 

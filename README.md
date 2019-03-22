@@ -17,6 +17,8 @@ apt-get install -y dc
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
 ./install.sh
+
+gcc src/eos/pubkey.cpp -o eosutils -lcrypto -lssl
 ```
 
 ## Etherium wallet generator
