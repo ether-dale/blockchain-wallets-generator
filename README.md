@@ -7,6 +7,7 @@ docker run -it ubuntu
 ```
 
 ## Install
+auto mode
 ```
 apt-get update
 apt-get install git                 - install git
@@ -17,12 +18,12 @@ cd blockchain-wallets-generator
 or in manual mode
 ```
 apt-get update
-apt-get install git                 - install git
-apt-get install -y build-essential  - insall gcc and g++ compilers
-apt-get install -y pwgen            - install password generator
-apt-get install -y dc               - calculator
-apt-get install -y vim-common       - xxd command 
-apt-get install -y libssl-dev       - install openssl headers
+apt-get install git              - install git
+apt-get install build-essential  - insall gcc and g++ compilers
+apt-get install pwgen            - install password generator
+apt-get install dc               - calculator
+apt-get install vim-common       - xxd command 
+apt-get install libssl-dev       - install openssl headers
 
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
