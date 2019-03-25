@@ -98,8 +98,7 @@ int main(int argc, char *argv[])
         puts("Unable to create keypair");
         return -1;
     }
-    // bbp_print_hex("priv #1   ", priv_bytes, sizeof(priv));
-
+   
     /* get private key back from EC_KEY */
 
     priv_bn = EC_KEY_get0_private_key(key);
@@ -112,8 +111,7 @@ int main(int argc, char *argv[])
     pub_p = EC_KEY_get0_public_key(key);
 
     BN_bn2bin(priv_bn, priv);
-
-    // bbp_print_hex("priv #2   ", priv, sizeof(priv));
+   
 
     const EC_GROUP *ec_group;
     ec_group = EC_KEY_get0_group(key);
@@ -124,13 +122,9 @@ int main(int argc, char *argv[])
         POINT_CONVERSION_UNCOMPRESSED,
         NULL);
 
-    // printf("\n%s\n", encoded);
-
     char subbuff[64];
     memcpy(subbuff, &encoded[2], 64);
     subbuff[64] = '\0';
-
-    // printf("=== \n%s\n", subbuff);
 
     encoded += 129;
 
@@ -148,8 +142,6 @@ int main(int argc, char *argv[])
     {
         pub_key[i] = subbuff[i - 2];
     }
-
-    // printf("=~~~ %s\n", pub_key);
 
     FILE *fp;
     int i;
