@@ -6,10 +6,19 @@ sudo docker pull ubuntu
 sudo docker run -it ubuntu
 ```
 
-### requires
-``` 
+## Install
+```
 apt-get update
-apt-get install -y git              - install git
+cd               - install git
+git clone https://github.com/ether-dale/blockchain-wallets-generator.git
+cd blockchain-wallets-generator
+```
+
+``` 
+./dependencies.sh
+```
+or
+```
 apt-get install -y build-essential  - insall gcc and g++ compilers
 apt-get install -y pwgen            - install password generator
 apt-get install -y dc               - calculator
@@ -19,15 +28,27 @@ apt-get install -y libssl-dev       - install openssl headers
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
 ./install.sh
+git clone https://github.com/maandree/libkeccak
+cd libkeccak
+make
+make install PREFIX=/usr
+cd
+ln -s /usr/local/lib/libkeccak.so.1 /lib64/
 
-gcc src/eos/pubkey.cpp -o eosutils -lcrypto -lssl
+git clone https://github.com/maandree/sha3sum
+cd sha3sum
+make
+make install
+
+gcc src/eos/pubkey.cpp -o eosutils -lcrypto
 ```
 
-## Etherium wallet generator
+## Usage
+### Etherium wallet generator
 `./gen_eth_wallet.sh <wallet-name>`
 
-## EOS wallet generator
+### EOS wallet generator
 `./gen_eos_wallet.sh <wallet-name> [seed]`
 
-## Tron wallet generator
+### Tron wallet generator
 `./gen_tron_wallet.sh <wallet-name>`

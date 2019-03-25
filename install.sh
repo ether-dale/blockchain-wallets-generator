@@ -12,6 +12,8 @@ cd sha3sum
 make
 make install
 
+gcc src/eos/pubkey.cpp -o eosutils -lcrypto
+
 
 
 
