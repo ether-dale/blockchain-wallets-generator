@@ -28,7 +28,7 @@ then
  echo "Generate wallet: not enough arguments"
  echo ""
  echo "Usage:"
- echo "./gen_eos_wallet.sh <wallet-name> [seed]"
+ echo "./eos_gen_wallet.sh <wallet-name> [seed]"
  exit 1;
 fi
 

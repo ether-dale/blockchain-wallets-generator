@@ -27,7 +27,7 @@ then
  echo "Generate wallet: not enough arguments"
  echo ""
  echo "Usage:"
- echo "./gen_tron_wallet.sh <wallet-name>"
+ echo "./tron_gen_wallet.sh <wallet-name>"
  exit 1;
 fi
 
