@@ -38,23 +38,10 @@ EC_KEY *bbp_ec_new_keypair(const uint8_t *priv_bytes)
     EC_KEY_set_public_key(key, pub);
 
     /* release resources */
-
     EC_POINT_free(pub);
     BN_CTX_end(ctx);
     BN_CTX_free(ctx);
     BN_clear_free(priv);
-
-    return key;
-}
-
-EC_KEY *bbp_ec_new_pubkey(const uint8_t *pub_bytes, size_t pub_len)
-{
-    EC_KEY *key;
-    const uint8_t *pub_bytes_copy;
-
-    key = EC_KEY_new_by_curve_name(NID_secp256k1);
-    pub_bytes_copy = pub_bytes;
-    o2i_ECPublicKey(&key, &pub_bytes_copy, pub_len);
 
     return key;
 }
@@ -91,16 +78,14 @@ int main(int argc, char *argv[])
         "compressed"};
 
     /* create keypair */
-
     key = bbp_ec_new_keypair(priv_bytes);
     if (!key)
     {
         puts("Unable to create keypair");
         return -1;
     }
-   
-    /* get private key back from EC_KEY */
 
+    /* get private key back from EC_KEY */
     priv_bn = EC_KEY_get0_private_key(key);
     if (!priv_bn)
     {
@@ -111,7 +96,6 @@ int main(int argc, char *argv[])
     pub_p = EC_KEY_get0_public_key(key);
 
     BN_bn2bin(priv_bn, priv);
-   
 
     const EC_GROUP *ec_group;
     ec_group = EC_KEY_get0_group(key);
@@ -143,18 +127,7 @@ int main(int argc, char *argv[])
         pub_key[i] = subbuff[i - 2];
     }
 
-    FILE *fp;
-    int i;
-    /* open the file for writing*/
-
-    fp = fopen("eos-wallets/encoded_pub", "w");
-
-    fprintf(fp, pub_key, pub_key);
-
-    /* close the file*/
-    fclose(fp);
-
-    EC_KEY_free(key);
+    printf(pub_key);
 
     return 0;
 }
