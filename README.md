@@ -2,14 +2,14 @@
 Safety creation keys for different blockchains. Always offline and minimum dependency.
 
 ```
-sudo docker pull ubuntu
-sudo docker run -it ubuntu
+docker pull ubuntu
+docker run -it ubuntu
 ```
 
 ## Install
 ```
 apt-get update
-cd apt-get install git              - install git
+apt-get install git              - install git
 ```
 
 ```
