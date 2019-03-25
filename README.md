@@ -10,12 +10,12 @@ sudo docker run -it ubuntu
 ```
 apt-get update
 cd apt-get install git              - install git
-git clone https://github.com/ether-dale/blockchain-wallets-generator.git
-
 ```
 
-``` 
-./dependencies.sh
+```
+git clone https://github.com/ether-dale/blockchain-wallets-generator.git
+cd blockchain-wallets-generator
+./install.sh
 ```
 or
 ```
