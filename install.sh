@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-apt-get install -y build-essential &&
-apt-get install -y pwgen &&
-apt-get install -y dc &&
-apt-get install -y vim-common &&
-apt-get install -y libssl-dev &&
+apt-get install -y build-essential pwgen dc vim-common libssl-dev
 
 git clone https://github.com/maandree/libkeccak
 cd libkeccak
