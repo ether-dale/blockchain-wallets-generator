@@ -21,6 +21,7 @@
 #SOFTWARE.
 
 WALLET=$1
+SEED=$2
 
 if [[ -z ${WALLET} ]]
 then
@@ -46,9 +47,13 @@ else
  mkdir ${DIR}
 fi
 
-#echo "Generate password for wallet"
-SEED=$(pwgen -s 13 7)
-echo ${SEED}> ${DIR}/${WALLET}-pass
+
+if [[ -z ${SEED} ]]
+then
+    #echo "Generate password for wallet"
+    SEED=$(pwgen -s 13 7)
+    echo ${SEED}> ${DIR}/${WALLET}-pass
+fi
 
 HASH="80$( echo -n ${SEED} | sha256sum | tr -d ' -' )"
 

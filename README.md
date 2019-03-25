@@ -25,5 +25,8 @@ gcc src/eos/pubkey.cpp -o eosutils -lcrypto -lssl
 ## Etherium wallet generator
 `./gen_eth_wallet.sh <wallet-name>`
 
+## Etherium wallet generator
+`./gen_eth_wallet.sh <wallet-name> [seed]`
+
 ## Tron wallet generator
 `./gen_tron_wallet.sh <wallet-name>`
