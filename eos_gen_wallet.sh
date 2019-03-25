@@ -32,17 +32,18 @@ then
  exit 1;
 fi
 
-ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT=${PWD}
+PROJECT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DIR=${ROOT}/eos-wallets/${WALLET}
 
 
-if [[ ! -f ${ROOT}/utils.sh ]]
+if [[ ! -f ${PROJECT_PATH}/utils.sh ]]
 then
  echo "Error: utils.sh file not found."
  exit 1;
 fi
 
-if [[ ! -f ${ROOT}/utils-eos ]]
+if [[ ! -f ${PROJECT_PATH}/utils-eos ]]
 then
  echo "Error: utils-eos file not found."
  echo "Try to run ./install.sh"
@@ -83,20 +84,20 @@ CHECKSUM=$( echo -n ${SHA256_1} | cut -c1-8 )
 #echo ">>> "${HASH}
 ADDCHECKSUM=${HASH}${CHECKSUM}
 
-source ${ROOT}/utils.sh
+source ${PROJECT_PATH}/utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 PRIVATEKEY=$(encodeBase58 ${ADDCHECKSUM})
 
 #echo "private key: "${PRIVATEKEY}
 echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
 
-ENCODED_PUB=$(echo -n $(${ROOT}/utils-eos ${HASH}))
+ENCODED_PUB=$(echo -n $(${PROJECT_PATH}/utils-eos ${HASH}))
 
 CHECKSUM=$(echo -n ${ENCODED_PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
 
 ADDCHECKSUM=${ENCODED_PUB}${CHECKSUM}
 
-source ${ROOT}/utils.sh
+source ${PROJECT_PATH}/utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 BASE58=$(encodeBase58 ${ADDCHECKSUM})
 
