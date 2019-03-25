@@ -17,7 +17,7 @@ git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
 ./install.sh
 ```
-or
+or in manual mode
 ```
 apt-get install -y build-essential  - insall gcc and g++ compilers
 apt-get install -y pwgen            - install password generator
