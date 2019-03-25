@@ -28,7 +28,7 @@ then
  echo "Generate wallet: not enough arguments"
  echo ""
  echo "Usage:"
- echo " ./gen-wallet <wallet name>"
+ echo "./gen_eos_wallet.sh <wallet-name> [seed]"
  exit 1;
 fi
 
@@ -52,7 +52,7 @@ if [[ -z ${SEED} ]]
 then
     #echo "Generate password for wallet"
     SEED=$(pwgen -s 13 7)
-    echo ${SEED}> ${DIR}/${WALLET}-pass
+    echo ${SEED}> ${DIR}/${WALLET}-seed
 fi
 
 HASH="80$( echo -n ${SEED} | sha256sum | tr -d ' -' )"
@@ -87,7 +87,8 @@ BASE58=$(encodeBase58 ${ADDCHECKSUM})
 
 PUBLICKEY="EOS${BASE58}"
 echo ${PUBLICKEY} > ${DIR}/${WALLET}-public
-#echo "public key: "${PUBLICKEY}
+
+echo "Keys has been generated successfully and stored in ${DIR}"
 
 
 

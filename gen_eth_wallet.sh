@@ -27,7 +27,7 @@ then
  echo "Generate wallet: not enough arguments"
  echo ""
  echo "Usage:"
- echo " ./gen-wallet <wallet name>"
+ echo "./gen_eth_wallet.sh <wallet-name>"
  exit 1;
 fi
 
@@ -60,3 +60,8 @@ cat ${DIR}/${WALLET}-key | grep priv -A 3 | tail -n +2 | tr -d '\n[:space:]:' | 
 
 #echo "Generate the hash and take the address part"
 cat ${DIR}/${WALLET}-pub | keccak-256sum -x -l | tr -d ' -' | tail -c 41 > ${DIR}/${WALLET}-address
+
+rm ${DIR}/${WALLET}-key
+rm ${DIR}/${WALLET}-pub
+
+echo "Keys has been generated successfully and stored in ${DIR}"

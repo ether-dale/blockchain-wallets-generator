@@ -27,7 +27,7 @@ then
  echo "Generate wallet: not enough arguments"
  echo ""
  echo "Usage:"
- echo " ./gen-wallet <wallet name>"
+ echo "./gen_tron_wallet.sh <wallet-name>"
  exit 1;
 fi
 
@@ -95,6 +95,11 @@ echo ${ADDRESS} > ${DIR}/${WALLET}-address
 echo "04${PUBLICKEY}" > ${DIR}/${WALLET}-public
 
 echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
+
+rm ${DIR}/${WALLET}-key
+rm ${DIR}/${WALLET}-public
+
+echo "Keys has been generated successfully and stored in ${DIR}"
 
 
 
