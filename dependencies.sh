@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-apt-get update
 apt-get install -y build-essential  - insall gcc and g++ compilers
 apt-get install -y pwgen            - install password generator
 apt-get install -y dc               - calculator
