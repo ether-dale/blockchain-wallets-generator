@@ -27,28 +27,35 @@ apt-get install -y libssl-dev       - install openssl headers
 
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
-./install.sh
+
 git clone https://github.com/maandree/libkeccak
 cd libkeccak
 make
 make install PREFIX=/usr
-cd
+cd ..
 ln -s /usr/local/lib/libkeccak.so.1 /lib64/
 
 git clone https://github.com/maandree/sha3sum
 cd sha3sum
 make
 make install
+cd ..
 
 gcc src/eos/pubkey.cpp -o eosutils -lcrypto
 ```
 
 ## Usage
 ### Etherium wallet generator
-`./gen_eth_wallet.sh <wallet-name>`
-
+`./gen_eth_wallet.sh <wallet-name>
+wallet-name is a directory in eth-wallets which will contains generated keys
+`
 ### EOS wallet generator
-`./gen_eos_wallet.sh <wallet-name> [seed]`
+`./gen_eos_wallet.sh <wallet-name> [seed]
+    wallet-name is a directory in eos-wallets which will contains generated keys
+    seed is a secret word which can help recover keys
+`
 
 ### Tron wallet generator
-`./gen_tron_wallet.sh <wallet-name>`
+`./gen_tron_wallet.sh <wallet-name>
+    wallet-name is a directory in tron-wallets which will contains generated keys
+`
