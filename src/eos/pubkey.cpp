@@ -6,6 +6,7 @@
 #include <openssl/obj_mac.h>
 #include <openssl/ecdsa.h>
 #include <openssl/ripemd.h>
+#include <stdio.h>
 
 #include <string.h>
 

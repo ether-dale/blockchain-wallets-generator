@@ -12,13 +12,6 @@ cd sha3sum
 make
 make install
 
-cd
-git clone https://github.com/openssl/openssl.git
-cd openssl
-./config
-make
-make install
-ldconfig
 
 
 
