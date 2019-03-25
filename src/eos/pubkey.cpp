@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
         pub_key[i] = subbuff[i - 2];
     }
 
-    printf(pub_key);
+    printf("%s", pub_key);
 
     return 0;
 }
