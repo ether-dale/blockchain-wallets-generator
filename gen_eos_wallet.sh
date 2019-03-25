@@ -21,6 +21,7 @@
 #SOFTWARE.
 
 WALLET=$1
+SEED=$2
 
 if [[ -z ${WALLET} ]]
 then
@@ -46,9 +47,13 @@ else
  mkdir ${DIR}
 fi
 
-#echo "Generate password for wallet"
-SEED=$(pwgen -s 13 7)
-echo ${SEED}> ${DIR}/${WALLET}-pass
+
+if [[ -z ${SEED} ]]
+then
+    #echo "Generate password for wallet"
+    SEED=$(pwgen -s 13 7)
+    echo ${SEED}> ${DIR}/${WALLET}-pass
+fi
 
 HASH="80$( echo -n ${SEED} | sha256sum | tr -d ' -' )"
 
@@ -67,20 +72,14 @@ source ./utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 PRIVATEKEY=$(encodeBase58 ${ADDCHECKSUM})
 
-echo "private key: "${PRIVATEKEY}
+#echo "private key: "${PRIVATEKEY}
 echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
 
-./eosutils ${HASH}
+ENCODED_PUB=$(echo -n $(./eosutils ${HASH}))
 
-while IFS='' read -r line || [[ -n "$line" ]]; do
-    PUB=${line}
-done < "${ROOT}/eos-wallets/encoded_pub"
+CHECKSUM=$(echo -n ${ENCODED_PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
 
-CHECKSUM=$(echo -n ${PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
-
-ADDCHECKSUM=${PUB}${CHECKSUM}
-
-rm ${ROOT}/eos-wallets/encoded_pub
+ADDCHECKSUM=${ENCODED_PUB}${CHECKSUM}
 
 source ./utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
@@ -88,7 +87,7 @@ BASE58=$(encodeBase58 ${ADDCHECKSUM})
 
 PUBLICKEY="EOS${BASE58}"
 echo ${PUBLICKEY} > ${DIR}/${WALLET}-public
-echo "public key: "${PUBLICKEY}
+#echo "public key: "${PUBLICKEY}
 
 
 

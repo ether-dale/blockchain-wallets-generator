@@ -6,6 +6,7 @@
 #include <openssl/obj_mac.h>
 #include <openssl/ecdsa.h>
 #include <openssl/ripemd.h>
+#include <stdio.h>
 
 #include <string.h>
 
@@ -38,23 +39,10 @@ EC_KEY *bbp_ec_new_keypair(const uint8_t *priv_bytes)
     EC_KEY_set_public_key(key, pub);
 
     /* release resources */
-
     EC_POINT_free(pub);
     BN_CTX_end(ctx);
     BN_CTX_free(ctx);
     BN_clear_free(priv);
-
-    return key;
-}
-
-EC_KEY *bbp_ec_new_pubkey(const uint8_t *pub_bytes, size_t pub_len)
-{
-    EC_KEY *key;
-    const uint8_t *pub_bytes_copy;
-
-    key = EC_KEY_new_by_curve_name(NID_secp256k1);
-    pub_bytes_copy = pub_bytes;
-    o2i_ECPublicKey(&key, &pub_bytes_copy, pub_len);
 
     return key;
 }
@@ -91,17 +79,14 @@ int main(int argc, char *argv[])
         "compressed"};
 
     /* create keypair */
-
     key = bbp_ec_new_keypair(priv_bytes);
     if (!key)
     {
         puts("Unable to create keypair");
         return -1;
     }
-    // bbp_print_hex("priv #1   ", priv_bytes, sizeof(priv));
 
     /* get private key back from EC_KEY */
-
     priv_bn = EC_KEY_get0_private_key(key);
     if (!priv_bn)
     {
@@ -113,8 +98,6 @@ int main(int argc, char *argv[])
 
     BN_bn2bin(priv_bn, priv);
 
-    // bbp_print_hex("priv #2   ", priv, sizeof(priv));
-
     const EC_GROUP *ec_group;
     ec_group = EC_KEY_get0_group(key);
 
@@ -124,13 +107,9 @@ int main(int argc, char *argv[])
         POINT_CONVERSION_UNCOMPRESSED,
         NULL);
 
-    // printf("\n%s\n", encoded);
-
     char subbuff[64];
     memcpy(subbuff, &encoded[2], 64);
     subbuff[64] = '\0';
-
-    // printf("=== \n%s\n", subbuff);
 
     encoded += 129;
 
@@ -149,20 +128,7 @@ int main(int argc, char *argv[])
         pub_key[i] = subbuff[i - 2];
     }
 
-    // printf("=~~~ %s\n", pub_key);
-
-    FILE *fp;
-    int i;
-    /* open the file for writing*/
-
-    fp = fopen("eos-wallets/encoded_pub", "w");
-
-    fprintf(fp, pub_key, pub_key);
-
-    /* close the file*/
-    fclose(fp);
-
-    EC_KEY_free(key);
+    printf("%s", pub_key);
 
     return 0;
 }
