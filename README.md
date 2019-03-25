@@ -9,12 +9,12 @@ sudo docker run -it ubuntu
 ### requires
 ``` 
 apt-get update
-apt-get install -y git
-apt-get install -y build-essential
-apt-get install -y pwgen
-apt-get install -y dc
-apt-get install -y vim
-apt-get install -y libssl-dev
+apt-get install -y git              - install git
+apt-get install -y build-essential  - insall gcc and g++ compilers
+apt-get install -y pwgen            - install password generator
+apt-get install -y dc               - calculator
+apt-get install -y vim-common       - xxd command 
+apt-get install -y libssl-dev       - install openssl headers
 
 git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
