@@ -68,20 +68,22 @@ CHECKSUM=$( echo -n ${SHA256_1} | cut -c1-8 )
 #echo ">>> "${HASH}
 ADDCHECKSUM=${HASH}${CHECKSUM}
 
-source ./utils.sh
+UTILS_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+source ${UTILS_PATH}/utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 PRIVATEKEY=$(encodeBase58 ${ADDCHECKSUM})
 
 #echo "private key: "${PRIVATEKEY}
 echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
 
-ENCODED_PUB=$(echo -n $(./eosutils ${HASH}))
+ENCODED_PUB=$(echo -n $(${UTILS_PATH}/utils-eos ${HASH}))
 
 CHECKSUM=$(echo -n ${ENCODED_PUB} | xxd -p -r | openssl dgst -ripemd160 | cut -c10-17)
 
 ADDCHECKSUM=${ENCODED_PUB}${CHECKSUM}
 
-source ./utils.sh
+source ${UTILS_PATH}/utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 BASE58=$(encodeBase58 ${ADDCHECKSUM})
 

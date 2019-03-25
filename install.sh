@@ -15,7 +15,7 @@ make
 make install
 cd ..
 
-gcc src/eos/pubkey.cpp -o eosutils -lcrypto
+gcc src/eos/pubkey.cpp -o utils-eos -lcrypto
 
 
 
