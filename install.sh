@@ -6,6 +6,7 @@ apt-get install -y dc &&
 apt-get install -y vim-common &&
 apt-get install -y libssl-dev &&
 
+cd ..
 git clone https://github.com/maandree/libkeccak
 cd libkeccak
 make
