@@ -46,16 +46,15 @@ gcc src/eos/pubkey.cpp -o eosutils -lcrypto
 
 ## Usage
 ### Etherium wallet generator
-`./gen_eth_wallet.sh <wallet-name>
+`./gen_eth_wallet.sh <wallet-name>`
 wallet-name is a directory in eth-wallets which will contains generated keys
-`
+
 ### EOS wallet generator
-`./gen_eos_wallet.sh <wallet-name> [seed]
+`./gen_eos_wallet.sh <wallet-name> [seed]`
     wallet-name is a directory in eos-wallets which will contains generated keys
     seed is a secret word which can help recover keys
-`
+
 
 ### Tron wallet generator
-`./gen_tron_wallet.sh <wallet-name>
+`./gen_tron_wallet.sh <wallet-name>`
     wallet-name is a directory in tron-wallets which will contains generated keys
-`
