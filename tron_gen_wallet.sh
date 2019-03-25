@@ -33,6 +33,7 @@ fi
 
 ROOT=${PWD}
 DIR=${ROOT}/tron-wallets/${WALLET}
+PROJECT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 if [[ -d ${DIR} ]]
 then
@@ -82,7 +83,8 @@ ADDCHECKSUM=${ADDRESS}${CHECKSUM}
 #echo "addchecksum: ${ADDCHECKSUM}"
 
 
-source ./utils.sh
+source ${PROJECT_PATH}/utils.sh
+
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 BASE58=$(encodeBase58 ${ADDCHECKSUM})
 #echo "base68encoded: "${BASE58}
