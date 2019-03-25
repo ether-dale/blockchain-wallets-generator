@@ -94,12 +94,12 @@ echo ${BASE58} > ${DIR}/${WALLET}-base58address
 echo ${ADDRESS} > ${DIR}/${WALLET}-address
 
 #echo "public-key: 04${PUBLICKEY}"
-echo "04${PUBLICKEY}" > ${DIR}/${WALLET}-public
+#echo "04${PUBLICKEY}" > ${DIR}/${WALLET}-pub
 
-echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
+echo ${PRIVATEKEY} > ${DIR}/${WALLET}-priv
 
 rm ${DIR}/${WALLET}-key
-rm ${DIR}/${WALLET}-public
+#rm ${DIR}/${WALLET}-pub
 
 echo "Keys has been generated successfully and stored in ${DIR}"
 

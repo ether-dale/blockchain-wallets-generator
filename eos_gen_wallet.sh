@@ -89,7 +89,7 @@ source ${PROJECT_PATH}/utils.sh
 PRIVATEKEY=$(encodeBase58 ${ADDCHECKSUM})
 
 #echo "private key: "${PRIVATEKEY}
-echo ${PRIVATEKEY} > ${DIR}/${WALLET}-private
+echo ${PRIVATEKEY} > ${DIR}/${WALLET}-priv
 
 ENCODED_PUB=$(echo -n $(${PROJECT_PATH}/utils-eos ${HASH}))
 
@@ -102,7 +102,7 @@ source ${PROJECT_PATH}/utils.sh
 BASE58=$(encodeBase58 ${ADDCHECKSUM})
 
 PUBLICKEY="EOS${BASE58}"
-echo ${PUBLICKEY} > ${DIR}/${WALLET}-public
+echo ${PUBLICKEY} > ${DIR}/${WALLET}-pub
 
 echo "Keys has been generated successfully and stored in ${DIR}"
 
