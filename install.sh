@@ -19,6 +19,7 @@ make
 make install
 cd ..
 
+cd blockchain-wallets-generator
 gcc src/eos/pubkey.cpp -o eosutils -lcrypto
 
 
