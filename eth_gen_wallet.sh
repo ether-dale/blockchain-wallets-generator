@@ -31,7 +31,7 @@ then
  exit 1;
 fi
 
-ROOT=${PWD}
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 DIR=${ROOT}/eth-wallets/${WALLET}
 
 if [[ -d ${DIR} ]]
