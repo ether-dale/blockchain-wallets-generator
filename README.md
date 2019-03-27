@@ -15,7 +15,7 @@ git clone https://github.com/ether-dale/blockchain-wallets-generator.git
 cd blockchain-wallets-generator
 ./install.sh
 ```
-or in manual mode
+or in a manual mode
 ```
 apt-get update
 apt-get install git              - install git
