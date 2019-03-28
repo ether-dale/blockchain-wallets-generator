@@ -88,10 +88,10 @@ source ${PROJECT_PATH}/utils.sh
 #echo "An encoded mainnet address begins with T and is 34 bytes in length."
 BASE58=$(encodeBase58 ${ADDCHECKSUM})
 #echo "base68encoded: "${BASE58}
-echo ${BASE58} > ${DIR}/${WALLET}-base58address
+echo ${BASE58} > ${DIR}/${WALLET}-address
 
 #echo "address: "${ADDRESS}
-echo ${ADDRESS} > ${DIR}/${WALLET}-address
+#echo ${ADDRESS} > ${DIR}/${WALLET}-address
 
 #echo "public-key: 04${PUBLICKEY}"
 #echo "04${PUBLICKEY}" > ${DIR}/${WALLET}-pub
